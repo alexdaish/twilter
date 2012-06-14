@@ -13,18 +13,25 @@
 // 
 // ==/UserScript==
 
-var matches = [/justin/i, /beiber/g, /beliebers/g, /drake/i];
+var matches = ["justin", "beiber", "beliebers", "drake", "flag"];
+var arr = $.makeArray(matches);
+arr = JSON.stringify(arr);
 
+GM_setValue("bla", arr);
+
+//GM_deleteValue("bla");
 function checkMatch(teststr) {
 	
 	for (j=0; j<matches.length; j++) {
 	var x = false;
-		var patt = matches[j];
+		var patt1 = matches[j];
+		patt = RegExp(patt1, "i");
 		x = patt.test(teststr);
 		console.log(x);
 		if (x == true) {
 		return true;
 		}
+		
 	}
 return false;
 
